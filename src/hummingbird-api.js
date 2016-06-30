@@ -3,7 +3,7 @@ import Helper from "./helper";
 import Libraries from "./libraries";
 import User from "./user";
 
-export default class HummingbirdAPI {
+module.exports = class HummingbirdAPI {
 
   constructor(api_key) {
     if (!api_key) throw new Error("No API key given!");

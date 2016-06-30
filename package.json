@@ -1,6 +1,6 @@
 {
   "name": "hummingbird-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A NodeJS wrapper for the Hummingbird API V1.",
   "main": "./build/hummingbird-api.js",
   "scripts": {
@@ -30,5 +30,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ChrisAlderson/hummingbird-api.git"
-}
+  }
 }

@@ -1,6 +1,6 @@
 {
   "name": "hummingbird-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A NodeJS wrapper for the Hummingbird API V1.",
   "main": "./build/hummingbird-api.js",
   "scripts": {

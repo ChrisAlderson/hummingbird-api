@@ -16,7 +16,7 @@ const optionalOptions = {
   notes: "Pretty awesome",
   episodes_watched: 3,
   increment_episodes: false
-}
+};
 
 User.authenticate({username: "username", email: "email", password: "password"})
   .then(auth_token => {

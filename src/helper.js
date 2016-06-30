@@ -1,15 +1,20 @@
-import req from "request";
+import request from "request";
 
 export default class Helper {
 
-  constructor(options) {
-    this.request = req.defaults({ options });
+  constructor(api_key, version) {
+    this.api_key = api_key;
+    this.version = version;
   };
 
   get(uri, qs, retry = true) {
     return new Promise((resolve, reject) => {
-      uri = `https://hummingbird.me/api/v1/${uri}`;
-      this.request({ method: "GET", uri, qs }, (err, res, body) => {
+      uri = `https://hummingbird.me/api/v${this.version}/${uri}`;
+      console.log(uri);
+      request({ method: "GET", headers: {
+        "X-Client-Id": this.api_key
+      }, uri, qs }, (err, res, body) => {
+        console.log(res.statusCode);
         if (err && retry) {
           return resolve(this.get(uri, qs, false));
         } else if (err) {
@@ -25,8 +30,10 @@ export default class Helper {
 
   post(uri, qs, retry = true) {
     return new Promise((resolve, reject) => {
-      uri = `https://hummingbird.me/api/v1/${uri}`;
-      this.request({ method: "POST", uri, qs }, (err, res, body) => {
+      uri = `https://hummingbird.me/api/v${this.version}/${uri}`;
+      request({ method: "POST", headers: {
+        "X-Client-Id": this.api_key
+      }, uri, qs }, (err, res, body) => {
         if (err && retry) {
           return resolve(this.get(uri, qs, false));
         } else if (err) {

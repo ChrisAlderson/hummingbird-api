@@ -2,7 +2,7 @@
 export default class User {
 
   constructor(helper) {
-    this.helper = helper
+    this.helper = helper;
   };
 
   authenticate({ username, email, password }) {

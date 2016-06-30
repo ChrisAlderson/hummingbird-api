@@ -1,37 +1,61 @@
 # Hummingbird API
 
-A NodeJS wrapper for the [Hummingbird](https://github.com/hummingbird-me/hummingbird) API V1. This wrapper needs an registered Hummingbird application key, you can register your application [here](https://hummingbird.me/apps/mine).
+A NodeJS wrapper for the [Hummingbird](https://github.com/hummingbird-me/hummingbird) API V1 and V2. This wrapper needs an registered Hummingbird application key, you can register your application [here](https://hummingbird.me/apps/mine).
 
 # Usage
 
-This wrapper supports all V1 methods of the API, for documentation on the API checkout the [Hummingbird wiki](https://github.com/hummingbird-me/hummingbird/wiki/API-v1-Methods).
+This wrapper supports all V1 and V2 methods of the API, for documentation on the API checkout the [Hummingbird wiki](https://github.com/hummingbird-me/hummingbird/wiki/API-v1-Methods).
+
+```javascript
+// Import the API wrapper.
+import HummingbirdAPI from "hummingbird-api";
+
+// The API wrapper needs the api_key from the registered application and a version.
+// Version can be 1 or 2, by default the version is 1.
+const hummingbirdAPI = new HummingbirdAPI("api_key", 2);
+
+// Destructuring the possible object from the API wrapper.
+const { Anime, Libraries, User } = hummingbirdAPI;
+```
 
 **Anime:**
 ```javascript
+// Import the API wrapper.
 import HummingbirdAPI from "hummingbird-api";
 
-const { Anime } = new HummingbirdAPI("api_key");
+// Destructuring the Anime object from the API wrapper.
+const { Anime } = new HummingbirdAPI("api_key", 2);
 
+// Get an anime by slug (can also be the id Hummingbird uses).
 Anime.getAnime("log-horizon")
   .then(value => console.log(value))
   .catch(err => console.error(err));
 
-Anime.search("log-horizon")
+// Get an anime by the MyAnimeList id.
+Anime.getAnimeByMal("17265")
   .then(value => console.log(value))
   .catch(err => console.error(err));
 
+/* Search is not supported in V2 (yet) */
+// Anime.search("log-horizon")
+//   .then(value => console.log(value))
+//   .catch(err => console.error(err));
 ```
 
 **Libraries:**
 ```javascript
+// Import the API wrapper.
 import HummingbirdAPI from "hummingbird-api";
 
+// Destructuring the Libraries and User object from the API wrapper.
 const { Libraries, User } = new HummingbirdAPI("api_key");
 
+// Get the library of someone by its username.
 Libraries.getLibrary("username")
   .then(value => console.log(value))
   .catch(err => console.error(err));
 
+// All the possible optional options to add or update a library
 const optionalOptions = {
   status: "currently-watching",
   privacy: "public",
@@ -44,6 +68,8 @@ const optionalOptions = {
   increment_episodes: false
 }
 
+// To add, update or remove a library you need to be authenticated.
+// This is also why we destructured the User object from the API wrapper.
 User.authenticate({username: "username", email: "email", password: "password"})
   .then(auth_token => {
     Libraries.addLibrary(1234, auth_token, optionalOptions);
@@ -51,31 +77,36 @@ User.authenticate({username: "username", email: "email", password: "password"})
     Libraries.removeLibrary(1234, auth_token);
   })
   .catch(err => console.error(err));
-
 ```
 
 **User:**
 ```javascript
+// Import the API wrapper.
 import HummingbirdAPI from "hummingbird-api";
 
+// Destructuring the User object from the API wrapper.
 const { User } = new HummingbirdAPI("api_key");
 
+// authenticate a user. You can use username or email you don't have to fill in both.
+// Either of those two are sufficient.
 User.authenticate({username: "username", email: "email", password: "password"})
   .then(value => console.log(value))
   .catch(err => console.error(err));
 
+// Get a user's info by its username.
 User.getUser("username")
   .then(value => console.log(value))
   .catch(err => console.error(err));
 
+// Get a user's feed by its username.
 User.getUserFeed("username")
   .then(value => console.log(value))
   .catch(err => console.error(err));
 
+// Get a user's favorites by its username.
 User.getUserFavorites("username")
   .then(value => console.log(value))
   .catch(err => console.error(err));
-
 ```
 
 # License

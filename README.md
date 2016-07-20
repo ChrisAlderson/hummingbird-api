@@ -1,5 +1,9 @@
 # Hummingbird API
 
+[![Build Status](https://travis-ci.org/ChrisAlderson/hummingbird-api.svg?branch=master)]()
+[![Dependency Status](https://david-dm.org/ChrisAlderson/hummingbird-api.svg)](https://david-dm.org/ChrisAlderson/hummingbird-api)
+[![devDependency Status](https://david-dm.org/ChrisAlderson/hummingbird-api/dev-status.svg)](https://david-dm.org/ChrisAlderson/hummingbird-api#info=devDependencies)
+
 A NodeJS wrapper for the [Hummingbird](https://github.com/hummingbird-me/hummingbird) API V1 and V2. This wrapper needs an registered Hummingbird application key, you can register your application [here](https://hummingbird.me/apps/mine).
 
 ## Usage

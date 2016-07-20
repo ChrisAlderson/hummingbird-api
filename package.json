@@ -1,6 +1,6 @@
 {
   "name": "hummingbird-api",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A NodeJS wrapper for the Hummingbird API V1 and V2.",
   "dependencies": {
     "request": "~2.73.0"
@@ -16,7 +16,6 @@
   "engines": {
     "node": ">=6.3.0"
   },
-  "license": "MIT",
   "keywords": [
     "anime",
     "hummingbird",

@@ -19,7 +19,7 @@ const HummingbirdAPI = require("hummingbird-api");
 
 // Depending on the version an api_key is needed.
 // The default version is version 1.
-let hummingbirdAPI = new KAT([api_key, version, debug]);
+let hummingbirdAPI = new KAT({[api_key, version, debug]});
 
 // Destructuring the possible object from the API wrapper.
 const { Anime, Libraries, User } = hummingbirdAPI;

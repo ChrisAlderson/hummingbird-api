@@ -6,6 +6,10 @@
 
 A NodeJS wrapper for the [Hummingbird](https://github.com/hummingbird-me/hummingbird) API V1 and V2. This wrapper needs an registered Hummingbird application key, you can register your application [here](https://hummingbird.me/apps/mine).
 
+# WARNING
+
+[This module is no longer working, for more information click this message.](https://medium.com/heykitsu/hummingbird-is-dead-long-live-kitsu-bda6ccfbbcce#.54j32dta7)
+
 ## Usage
 
 #### Setup
